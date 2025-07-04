@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Impostor Game - Join</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+        <h1>Impostor Game</h1>
+        <form method="post">
+            <label>
+                <input type="text" name="name" placeholder="Enter your name..." required>
+            </label>
+            <br>
+            <button type="submit">Join Game</button>
+        </form>
+        {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    </div>
+</body>
+</html>

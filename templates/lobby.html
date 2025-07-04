@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Impostor Game - Lobby</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+        <h1>Lobby</h1>
+        <ul>
+            {% for p in players %}
+            <li>{{ p.name }}{% if p.name == me %} <b>(You)</b>{% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% if not started %}
+            {% if players[0].name == me %}
+                <a href="{{ url_for('start') }}"><button>Start Game</button></a>
+            {% else %}
+                <p>Waiting for host ({{ players[0].name }}) to start...</p>
+            {% endif %}
+        {% else %}
+            <a href="{{ url_for('info') }}"><button>Show Your Role</button></a>
+        {% endif %}
+        <br><br>
+        <a href="{{ url_for('reset') }}"><button>Reset Game</button></a>
+    </div>
+</body>
+</html>
